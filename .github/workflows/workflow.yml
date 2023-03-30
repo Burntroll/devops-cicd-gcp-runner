@@ -1,0 +1,28 @@
+name: Docker Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./app
+        push: true
+        tags: burntroll/github-runner:1.0
+
+    - name: Run Docker container
+      uses: docker/compose-action@1.2.0
+      with:
+        compose-file: docker-compose.yml
+        service: webserver
+        command: up -d
