@@ -21,8 +21,6 @@ jobs:
         tags: burntroll/github-runner:1.0
 
     - name: Run Docker container
-      uses: docker/compose-action@1.4.2
-      with:
-        compose-file: docker-compose.yml
-        service: webserver
-        command: up -d
+      run: |
+        docker-compose up -d
+      working-directory: ./app
