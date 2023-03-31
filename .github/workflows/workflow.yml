@@ -24,7 +24,7 @@ jobs:
         no-cache: false
         pull: false
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
+#
     - name: Run Docker container
       run: |
         docker-compose up -d
