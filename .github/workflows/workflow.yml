@@ -44,25 +44,3 @@ jobs:
       - name: Run Docker container
         run: |
           docker run -dti --name webserver -p 80:80 burntroll/github-runner:1.0
-
-#stages:
-#  - build
-#  - deploy
-
-#create_images:
-#  stage: build
-#  tags:
-#    - Linux
-#  script:
-#    - docker build -t burntroll/github-runner:1.0 app/.
-#    - docker push burntroll/github-runner:1.0
-
-#run_images:
-#  stage: deploy
-#  needs:
-#    - create_images
-#  tags:
-#    - Linux
-#  script:
-#    - docker run -dti --name webserver -p 80:80 burntroll/github-runner:1.0
-
