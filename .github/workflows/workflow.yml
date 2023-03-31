@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_and_deploy:
+  build-and-push:
     runs-on: self-hosted
 
     steps:
@@ -26,10 +26,24 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run Docker container
-      run: |
-        docker-compose up -d
+      run: docker build -t burntroll/github-runner:1.0 app/.
       working-directory: ./app
 
+    - name: Push Docker container
+      run: docker push burntroll/github-runner:1.0
+      working-directory: ./app     
+
+  run-container:
+    runs-on: self-hosted
+    needs:
+      - build-and-push
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Docker container
+        run: |
+          docker run -dti --name webserver -p 80:80 burntroll/github-runner:1.0
 
 #stages:
 #  - build
