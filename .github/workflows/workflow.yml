@@ -20,6 +20,10 @@ jobs:
         context: ./app
         push: true
         tags: burntroll/github-runner:1.0
+        load: false
+        no-cache: false
+        pull: false
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run Docker container
       run: |
