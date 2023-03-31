@@ -26,7 +26,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run Docker container
-      run: docker build -t burntroll/github-runner:1.0 -f app/Dockerfile app/
+      run: docker build -t burntroll/github-runner:1.0 .
       working-directory: ./app
 
     - name: Push Docker container
