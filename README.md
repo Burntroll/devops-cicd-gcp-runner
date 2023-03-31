@@ -16,7 +16,7 @@ This project is designed to demonstrate my abilities with GitHub Pipeline. It co
 
 ## Contributing
 
-Contributions to this project are welcome! Feel free to fork this repository and submit a pull request with your changes.
+Contributions to this project are welcome! Feel free to fork this repository and submit a pull request with your changes. 
 
 ## Credits
 
